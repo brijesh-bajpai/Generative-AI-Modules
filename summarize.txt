@@ -1,0 +1,12 @@
+
+To upgrade pip use below commmand:
+
+python.exe -m pip install --upgrade pip
+
+Install below lib in vs code -------
+
+pip install langchain_community --done
+pip install langchain --done
+pip install pypdf --done
+pip install chromadb --done
+pip install tiktoken --done
