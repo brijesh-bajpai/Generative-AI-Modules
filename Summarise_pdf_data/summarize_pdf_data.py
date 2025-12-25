@@ -12,7 +12,7 @@ client = genai.Client(api_key=gemini_api_key)
 
 # for this example I used Alphabet Inc 10-K Report 2022
 # https://s206.q4cdn.com/479360582/files/doc_financials/2024/q4/goog-10-k-2024.pdf
-DOC_PATH = "goog-10-k-2024.pdf"
+DOC_PATH = "Summarise_pdf_data/goog-10-k-2024.pdf"
 CHROMA_PATH = "Chroma"
 # ----- Data Indexing Process -----
 # load your pdf doc
