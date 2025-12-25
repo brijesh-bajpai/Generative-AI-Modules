@@ -1,0 +1,6 @@
+----------------------below are required library----------------
+
+pip install torch torchaudio numpy scipy
+pip install librosa
+pip install torchcodec
+

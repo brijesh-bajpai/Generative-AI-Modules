@@ -7,7 +7,7 @@ from langchain_community.vectorstores import Chroma
 from langchain_core.prompts import ChatPromptTemplate
 
 # initialize GenAI client
-gemini_api_key ="AIzaSyBOg390rHYNs5TOchE-Q7gUyh9tVCMe3yk"
+gemini_api_key ="AIzaSyCU3bcujpYmPpvrkatvXbRwnlxI7pWgeow"
 client = genai.Client(api_key=gemini_api_key)
 
 # for this example I used Alphabet Inc 10-K Report 2022
@@ -62,7 +62,7 @@ prompt = prompt_template.format(context=context_text, question=query)
 # call LLM model to generate the answer based on the given context and query
 
 model = ChatGoogleGenerativeAI(
-    model="gemini-1.5-pro",          # or "gemini-1.5-flash" for faster responses
+    model="gemini-2.5-flash-lite",          # or "gemini-1.5-flash" for faster responses
     google_api_key=gemini_api_key
 )
 
