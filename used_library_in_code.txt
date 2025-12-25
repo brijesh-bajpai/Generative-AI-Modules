@@ -5,8 +5,14 @@ python.exe -m pip install --upgrade pip
 
 Install below lib in vs code -------
 
+pip install google-genai - done
+pip install langchain-google-genai google-genai
+pip install langchain-text-splitters
 pip install langchain_community --done
 pip install langchain --done
+pip install --upgrade langchain  - upgrade lenchain
+pip install --upgrade langchain-core - upgrade lenchain-core
+
 pip install pypdf --done
 pip install chromadb --done
 pip install tiktoken --done

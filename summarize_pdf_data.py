@@ -1,16 +1,18 @@
-import openai
 import chromadb
-import os
+from google import genai
+from langchain_google_genai import ChatGoogleGenerativeAI, GoogleGenerativeAIEmbeddings
 from langchain_community.document_loaders import PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.embeddings.openai import OpenAIEmbeddings
-from langchain.vectorstores import Chroma
-from langchain.prompts import ChatPromptTemplate
-from langchain.chat_models import ChatOpenAI
-OPENAI_API_KEY = "" # add your OpenAI API Key
+from langchain_text_splitters import CharacterTextSplitter
+from langchain_community.vectorstores import Chroma 
+from langchain_core.prompts import ChatPromptTemplate
+
+# initialize GenAI client
+gemini_api_key ="AIzaSyBOg390rHYNs5TOchE-Q7gUyh9tVCMe3yk"
+client = genai.Client(api_key=gemini_api_key)
+
 # for this example I used Alphabet Inc 10-K Report 2022
-# https://www.sec.gov/Archives/edgar/data/1652044/000165204423000016/goog-20221231.htm
-DOC_PATH = "/content/sample_data/alphabet_10K_2022.pdf"
+# https://s206.q4cdn.com/479360582/files/doc_financials/2024/q4/goog-10-k-2024.pdf
+DOC_PATH = "goog-10-k-2024.pdf"
 CHROMA_PATH = "Chroma"
 # ----- Data Indexing Process -----
 # load your pdf doc
@@ -18,11 +20,16 @@ loader = PyPDFLoader(DOC_PATH)
 pages = loader.load()
 
 # split the doc into smaller chunks i.e. chunk_size=500
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=50)
+text_splitter = CharacterTextSplitter(chunk_size=500, chunk_overlap=50)
 chunks = text_splitter.split_documents(pages)
 
-# get OpenAI Embedding model
-embeddings = OpenAIEmbeddings(openai_api_key="")
+# get Gemini Embedding model
+
+embeddings = GoogleGenerativeAIEmbeddings(
+    model="models/embedding-001",   # Gemini embedding model
+    google_api_key=gemini_api_key
+)
+
 
 # embed the chunks as vectors and load them into the database
 db_chroma = Chroma.from_documents(chunks, embeddings, persist_directory=CHROMA_PATH)
@@ -53,7 +60,15 @@ prompt_template = ChatPromptTemplate.from_template(PROMPT_TEMPLATE)
 prompt = prompt_template.format(context=context_text, question=query)
 
 # call LLM model to generate the answer based on the given context and query
-model = ChatOpenAI(openai_api_key="")
+
+model = ChatGoogleGenerativeAI(
+    model="gemini-1.5-pro",          # or "gemini-1.5-flash" for faster responses
+    google_api_key=gemini_api_key
+)
+
+
 response_text = model.predict(prompt)
 print("Question:")
-print(query)    
+print(query)  
+print("\nAnswer:")
+print(response_text)  
