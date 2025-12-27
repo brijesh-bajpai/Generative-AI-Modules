@@ -1,0 +1,9 @@
+1-pip install gTTS pydub
+1. Install FFmpeg on Windows
+- Download FFmpeg build: https://ffmpeg.org/download.html → choose Windows builds (e.g. from gyan.dev).
+- Extract the ZIP (e.g. to C:\ffmpeg).
+- Add C:\ffmpeg\bin to your PATH environment variable:
+- Press Win + R, type sysdm.cpl
+- Advanced → Environment Variables → Edit PATH → add C:\ffmpeg\bin
+- Restart your terminal/IDE.
+Now ffmpeg.exe and ffprobe.exe will be found, and pydub can read MP3/M4A/other formats.
