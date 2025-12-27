@@ -7,7 +7,7 @@ from langchain_community.vectorstores import Chroma
 from langchain_core.prompts import ChatPromptTemplate
 
 # initialize GenAI client
-gemini_api_key ="AIzaSyCU3bcujpYmPpvrkatvXbRwnlxI7pWgeow"
+gemini_api_key =""
 client = genai.Client(api_key=gemini_api_key)
 
 # for this example I used Alphabet Inc 10-K Report 2022
