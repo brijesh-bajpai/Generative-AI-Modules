@@ -1,6 +1,6 @@
 1- pip install SpeechRecognition gTTS googletrans==4.0.0-rc1 pydub
 2- pip install SpeechRecognition gTTS deep-translator pydub
 3- How to run:
- - python translator_app.py path\to\input.wav en-US
- - or
- - python translator_app.py path\to\input.mp3 hi-IN
+ - python Speech_Converter_in_language\Speech_In_text_converter.py Speech_Converter_in_language\speech.mp3 en-US
+  - or
+ - python Speech_Converter_in_language\Speech_In_text_converter.py Speech_Converter_in_language\speech.mp3 hi-IN
